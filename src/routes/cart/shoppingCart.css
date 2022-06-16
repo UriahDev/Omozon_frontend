@@ -1,0 +1,26 @@
+.shop_contain {
+   background-color: #FFFFFF;
+   width: 100%;
+   padding: 10px;
+}
+
+.divs {
+   flex: 1;
+   padding: 5px;
+}
+
+.inItem {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.other_display {
+   display: grid;
+   place-items: center;
+}
+
+.other_display p {
+   padding: 10px;
+   text-align: center;
+}

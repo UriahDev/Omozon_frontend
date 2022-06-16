@@ -1,0 +1,62 @@
+.account_main {
+    display: grid;
+    margin-top: 60px;
+    place-items: center;
+    height: 480px;
+}
+
+.account_main h3 {
+    margin-bottom: -10px;
+}
+
+.input {
+    background-color: #FFFFFF;
+    border: 0;
+    height: 40px;
+    width: 180px;
+    margin-top: -2.5px;
+    margin-left: 10px;
+}
+
+.input:focus {
+    border: 0;
+}
+
+.input_btn {
+    height: 40px;
+    width: 160px;
+    padding: 5px;
+    color: #FFFFFF;
+    background-color: black;
+    font-weight: bold;
+    border: 0;
+    cursor: pointer;
+}
+
+.input_btn:active {
+    background-color: #FFFFFF;
+    color: black;
+}
+
+.input_contain {
+    background-color: #FFFFFF;
+    border: 0;
+    height: 45px;
+    width: 220px;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.form {
+    display: grid;
+    place-items: center;
+}
+
+.small {
+    width: 180px;
+    text-align: center;
+}
+
+.c_strng {
+    cursor: pointer;
+}

@@ -1,0 +1,31 @@
+.checkout_contain {
+    background-color: #112B3C;
+    color: #FFFFFF;
+    width: 100%;
+    padding: 10px;
+}
+
+.checkout_contain h4 {
+    text-align: center;
+}
+
+.checkout_contain h5 {
+    padding: 5px;
+}
+
+.btn_contain {
+    display: grid;
+    place-items: center;
+}
+
+.edit_btn {
+	height: 40px;
+	width: 100px;
+    padding: 5px;
+    color: #112B3C;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    flex: 1;
+    border: 1px solid #112B3C;
+	margin-top: 10px;
+}

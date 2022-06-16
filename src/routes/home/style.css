@@ -1,0 +1,15 @@
+.inside_main_display {
+	margin-top: 55px;
+	background-color: #0AA1DD;
+	width: 100vw;
+	margin: 0 auto;
+	height: 45vh;
+	color: #FFFFFF;
+	background-image: url('https://blog.hubspot.com/hubfs/ecommerce-1.png');
+}
+
+@media only screen and (min-width: 1000px) {
+	.inside_main_display {
+		height: 70vh;
+	}
+}

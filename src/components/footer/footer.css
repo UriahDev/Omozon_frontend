@@ -1,0 +1,57 @@
+.footer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.main {
+    background-color: #FFFFFF;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    height: auto;
+    margin-top: 20px;
+}
+
+.footer p, h4 {
+    margin: 10px;
+}
+
+.each {
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+}
+
+.contain_input {
+    display: flex;
+    width: 90%;
+}
+
+.input_footer {
+    background-color: #FFFFFF;
+    border: 1px solid black;
+    height: 40px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-top: 0;
+    flex: 2;
+}
+
+.input_btn {
+    height: 40px;
+    padding: 5px;
+    color: #FFFFFF;
+    background-color: black;
+    font-weight: bold;
+    flex: 1;
+    border: 0;
+}
+
+.center {
+    text-align: 'center';
+    margin-bottom: 10px;
+}

@@ -1,0 +1,53 @@
+.header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 55px;
+	padding: 0;
+	background: #FFFFFF;
+	font-weight: 400;
+	z-index: 50;
+}
+
+/*#f3f5f9 */
+
+.header h1 {
+	color: black;
+	float: left;
+	margin: 0;
+	padding: 0 10px;
+	font-size: 20px;
+	line-height: 56px;
+	font-weight: 400;
+}
+
+.header nav {
+	float: right;
+	font-size: 100%;
+}
+
+.header nav a {
+	display: inline-block;
+	height: 56px;
+	line-height: 56px;
+	padding: 0 10px;
+	min-width: 50px;
+	text-align: center;
+	background: rgba(255,255,255,0);
+	text-decoration: none;
+	will-change: background-color;
+}
+
+.active{
+	color: black;
+}
+
+.icon {
+	margin-right: 5px;
+}
+
+.nav {
+	padding: 5px;
+	margin: 5px;
+}

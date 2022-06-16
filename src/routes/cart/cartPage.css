@@ -1,0 +1,27 @@
+.main_cart {
+    margin-top: 55px;
+}
+
+.cartContainer {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.each_c {
+    flex: 1;
+}
+
+.empty {
+    background-color: #FFFFFF;
+    height: 20vh;
+}
+
+@media only screen and (max-width: 750px) {
+    .cartContainer {
+        display: grid;
+    }
+    .empty {
+        display: none;
+    }
+}

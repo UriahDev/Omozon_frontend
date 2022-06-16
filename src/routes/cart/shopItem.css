@@ -1,0 +1,41 @@
+.shopItem_contain {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+.name {
+    width: 80px;
+    height: auto;
+}
+
+.btn_contain_shopItem {
+    background-color: #112B3C;
+    display: flex;
+    color: #FFFFFF;
+    margin: 0 10px;
+}
+
+.btn_contain_shopItem p {
+    width: 20px;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.btn_contain_shopItem button {
+    background-color: #FFFFFF;
+    border: 0;
+    padding: 0 5px;
+}
+
+.divs {
+    flex: 1;
+    padding: 5px;
+}

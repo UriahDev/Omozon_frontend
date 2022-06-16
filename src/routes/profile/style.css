@@ -1,0 +1,90 @@
+.profile_innerOne {
+	background-color: #FFFFFF;
+	padding: 30px;
+	margin-top: 55px;
+	width: 100%;
+	height: auto;
+	display: flex;
+	align-items: left;
+	justify-content: left;
+}
+
+.profile_pic {
+	width: 200px;
+	height: auto;
+	margin-right: 20px;
+	display: flex;
+	align-items: left;
+	justify-content: left;
+	border-radius: 50%;
+}
+
+.signout_btn {
+    height: 40px;
+	width: 80px;
+    padding: 5px;
+    color: #FFFFFF;
+    background-color: black;
+    font-weight: bold;
+    flex: 1;
+    border: 0;
+	margin-top: 10px;
+}
+
+.edit_btn {
+	height: 40px;
+	width: 80px;
+    padding: 5px;
+    color: black;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    flex: 1;
+    border: 1px solid black;
+	margin-top: 10px;
+}
+
+.profile_pic img {
+	width: 100%;
+	height: auto;
+	box-shadow: 1px 1px 5px #aaaaaa;
+}
+
+.profile_writings {
+	margin: auto 0;
+}
+
+.btns {
+	display: flex;
+}
+
+.other {
+	background-color: #FFFFFF;
+	padding-top: 20px;
+}
+
+.other button{
+	/* display: block; */
+	height: 40px;
+	width: 80px;
+    padding: 5px;
+    color: black;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    flex: 1;
+	border: 0;
+    border-bottom: 1px solid black;
+}
+
+.other button:focus {
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 0;
+}
+
+.isActive {
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 0;
+}
