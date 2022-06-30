@@ -1,5 +1,9 @@
 import { Router } from 'preact-router';
 
+//Firebase import and usage
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from './config';
+
 import Header from './header/index';
 import Footer from './footer/footer';
 import './app.css';
@@ -8,10 +12,19 @@ import './app.css';
 import { atom, useAtom } from 'jotai';
 import { Provider } from 'jotai';
 
+//Initializing firebase
+export const app = initializeApp(firebaseConfig);
+
 //Getting Data from local storage
 let getCartDataFromLocalStorage;
 getCartDataFromLocalStorage = JSON.parse(localStorage.getItem('items'));
 if(getCartDataFromLocalStorage == null) {getCartDataFromLocalStorage = []};
+
+//Getting User Data from local storage
+let getUser;
+getUser = JSON.parse(localStorage.getItem('user'));
+if(getUser == null) getUser = false 
+else getUser = true; 
 
 // Code-splitting is automated for `routes` directory
 import Home from '../routes/home';
@@ -29,8 +42,9 @@ for(let i = 0; i < result.length; i++) {
 
 //Jotai constants
 export const subtotal = atom(final);
-export const allTotal = atom(final + 5);
+export const allTotal = atom(final > 0? final + 5: 0);
 export const allCart = atom(getCartDataFromLocalStorage);
+export const logIn = atom(getUser);
 
 const App = () => {
 	const [subTotal, setSubTotal] = useAtom(subtotal);

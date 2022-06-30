@@ -1,5 +1,6 @@
 import { useAtom } from 'jotai';
 import { allTotal, subtotal } from '../../components/app';
+import Purchase from '../../components/payment/pay';
 import './checkout.css';
 
 const Checkout = () => {
@@ -14,9 +15,7 @@ return(
         <h5>SubTotal: ${subTotal}</h5>
         <h5>Delivery Fees: $5</h5>
         <h5>Total: ${total}</h5>
-        <div className='btn_contain'>
-            <button className='edit_btn'>Purchase</button>
-        </div>
+        <Purchase />
     </div>
 );
 }

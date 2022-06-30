@@ -10,6 +10,7 @@ import { allCart } from '../../components/app';
 
 const CartPage = () => {
     const [allCartData] = useAtom(allCart);
+
     return(
         <div className='main_cart'>
             <ScrollToTopOnMount />

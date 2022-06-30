@@ -1,7 +1,6 @@
 import ScrollToTopOnMount from '../../components/scrollToTop';
 
-import productData from '../../data/productsData';
-import dataProduct from '../../data/dataProduct';
+import { products } from '../../data/products';
 import './productPage.css';
 
 //jotai import
@@ -14,8 +13,8 @@ const ProductPage = ({ id }) => {
     const [, setAllCartData] = useAtom(allCart);
 
     let product;
-    if (id <= 10) [ product ] = productData.filter(element => element.id == id); 
-    else [ product ] = dataProduct.filter(element => element.id == id);   
+    if (id <= 10) [ product ] = products.filter(element => element.id == id); 
+    // else [ product ] = dataProduct.filter(element => element.id == id);   
     let allProduct = [];
     
     const storeProduct = () => {

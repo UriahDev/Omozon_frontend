@@ -1,13 +1,21 @@
 import { useState } from "preact/hooks";
-import axios from "axios";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from 'firebase/auth';
 import './account.css'; 
+
+//Jotai import 
+import { useAtom } from "jotai";
+import { logIn } from "../../../components/app";
 
 //icons import 
 import { BiUser } from 'react-icons/bi';
 import { SiMinutemailer } from 'react-icons/si';
 import { RiLockPasswordLine, RiLockPasswordFill } from 'react-icons/ri';
 
+//Firebase initialized app import
+import { app } from "../../../components/app";
+
 const Account = () => {
+    const [,setLoggedIn] = useAtom(logIn);
     const [ username, setUsername ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -43,17 +51,39 @@ const Account = () => {
         console.log(user)
       
         if(user.length !== 0 ) {
-            axios
-            .post('http://localhost:9000/profile', user)
-            .then((res) => {
-                if(typeof(res.data.errorCode)){
-                    const { errorCode, errorMessage} = res.data;
-                    alert(errorCode + errorMessage)
-                }
-            })
-            .catch(err => {
-              console.log(err);
-            });
+            const auth = getAuth(app);
+            if(isRegister === 'Register') {
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        // ...
+                        localStorage.setItem('user', JSON.stringify(username));
+                        setLoggedIn(true);
+                        console.log(user);
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        // ..
+                        console.log(`%c ${errorCode} %c ${errorMessage}`, `color: red`, `color:green`);
+                    })
+            } else {
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        // ...
+                        localStorage.setItem('user', 'true');
+                        setLoggedIn(true);
+                        console.log(user);
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log(`%c ${errorCode} %c ${errorMessage}`, `color: red`, `color:green`);
+                    });
+            }
         }
     }
 
