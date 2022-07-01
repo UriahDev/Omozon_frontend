@@ -16,7 +16,7 @@ const ProductDisplay = () => {
     const result = await axios.post(import.meta.env.VITE_POST_URL, {
       products,
     },{
-      credentials: 'include',
+      withCredentials: false,
       headers: {
         'Content-Type': 'application/json'
       }
