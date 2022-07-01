@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { useAtom } from 'jotai';
 import './shopItem.css';
 
@@ -12,7 +12,7 @@ const ShopItem = ({name, image, id, amount, func}) => {
 
     const increaseQuantity = () => {
         setSubTotal(prev => prev + (amount));
-        if(total == 0) setTotal(prev => prev + amount + 5)
+        if(total == 0) setTotal(prev => prev + amount + 5);
         else setTotal(prev => prev + (amount));
         setItemQuantity(itemQuantity + 1);
     }
@@ -32,13 +32,15 @@ const ShopItem = ({name, image, id, amount, func}) => {
         }
     };
 
-    func(itemQuantity);
+    useEffect(() => {
+        func(itemQuantity);
+    }, [itemQuantity, id]);
 
     return (
     <div className='shopItem_contain' key={id}>
         <img src={image} className='image' />
         <div className='divs'>
-            <p className='name'>{name}</p>
+            <p className='name'>{name.substring(0, 15)}{name.length > 15 && '...'}</p>
         </div>
         <div className='btn_contain_shopItem'>
             <button onClick={decreaseQuantity}>-</button>

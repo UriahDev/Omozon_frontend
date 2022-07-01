@@ -11,11 +11,9 @@ const ProductDisplay = () => {
 
   const products = allCartData.map(product => product.id);
 
-  console.log(allCartData);
-
   const submitProducts = async (e) => {
     e.preventDefault();
-    const result = await axios.post('http://localhost:4242/create-checkout-session', {
+    const result = await axios.post(import.meta.env.VITE_POST_URL, {
       products,
     },{
       headers: {

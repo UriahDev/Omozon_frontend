@@ -6,22 +6,29 @@ import './shoppingCart.css';
 //importing jotai context
 import { useAtom } from 'jotai';
 import { allTotal, subtotal, allCart } from '../../components/app';
+import { useEffect } from 'preact/hooks';
 
 const ShoppingCart = () => {
-    const [, setTotal] = useAtom(allTotal);
-    const [, setSubTotal] = useAtom(subtotal);
+    const [total, setTotal] = useAtom(allTotal);
+    const [subTotal, setSubTotal] = useAtom(subtotal);
     const [cartData,setCartData] = useAtom(allCart);
 
     let itemQuant;
     const pull_data = (data) => itemQuant = data;
+    useEffect(() => {
+        pull_data();
+    }, [itemQuant]);
+
 
     const removeProduct = (id) => {
         const items = JSON.parse(localStorage.getItem('items'));
         const updatedStorage = items.filter(element => element.id !== id);
         const [ subtractItem ] = items.filter(element => element.id == id);
-        const amountToSubtract = itemQuant * subtractItem.amount;
-        setSubTotal(prev => prev - amountToSubtract);
-        updatedStorage.length === 0 ? setTotal(prev => (prev - 5) - amountToSubtract) : setTotal(prev => prev - amountToSubtract);
+        let amountToSubtract;
+        if(itemQuant == undefined) amountToSubtract = subtractItem.amount
+        else amountToSubtract = itemQuant * subtractItem.amount;
+        if(subTotal > 0) setSubTotal(prev => prev - amountToSubtract);
+        if(total > 0) updatedStorage.length === 0 ? setTotal(prev => (prev - 5) - amountToSubtract) : setTotal(prev => prev - amountToSubtract);
         localStorage.setItem('items', JSON.stringify(updatedStorage));
         setCartData(() => updatedStorage);
     }

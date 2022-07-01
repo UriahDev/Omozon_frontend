@@ -60,13 +60,11 @@ const Account = () => {
                         // ...
                         localStorage.setItem('user', JSON.stringify(username));
                         setLoggedIn(true);
-                        console.log(user);
                     })
                     .catch((error) => {
                         const errorCode = error.code;
                         const errorMessage = error.message;
                         // ..
-                        console.log(`%c ${errorCode} %c ${errorMessage}`, `color: red`, `color:green`);
                     })
             } else {
                 signInWithEmailAndPassword(auth, email, password)
@@ -76,12 +74,10 @@ const Account = () => {
                         // ...
                         localStorage.setItem('user', 'true');
                         setLoggedIn(true);
-                        console.log(user);
                     })
                     .catch((error) => {
                         const errorCode = error.code;
                         const errorMessage = error.message;
-                        console.log(`%c ${errorCode} %c ${errorMessage}`, `color: red`, `color:green`);
                     });
             }
         }
