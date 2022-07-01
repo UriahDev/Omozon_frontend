@@ -13,7 +13,7 @@ const ProductDisplay = () => {
 
   const submitProducts = async (e) => {
     e.preventDefault();
-    const result = await axios.post(import.meta.env.VITE_POST_URL, {
+    const result = await axios.post('https://omozonbackend.netlify.app/create-checkout-session', {
       products,
     },{
       headers: {

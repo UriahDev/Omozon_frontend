@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "private": true,
+  "proxy": "https://omozonbackend.netlify.app",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
