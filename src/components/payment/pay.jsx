@@ -4,17 +4,15 @@ import axios from 'axios';
 
 //Importing Jotai
 import { useAtom } from 'jotai';
-import { allCart } from '../../components/app';
+import { quantities } from '../../components/app';
 
 const ProductDisplay = () => {
-  const [allCartData] = useAtom(allCart);
-
-  const products = allCartData.map(product => product.id);
+  const [quant] = useAtom(quantities);
 
   const submitProducts = async (e) => {
     e.preventDefault();
     const result = await axios.post(import.meta.env.VITE_POST_URL, {
-      products,
+      products: quant,
     },{
       withCredentials: true,
       headers: {

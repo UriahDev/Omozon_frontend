@@ -36,6 +36,7 @@ import CartPage from '../routes/cart/cartPage';
 let final = 0;
 let subTotal=0;
 const result = getCartDataFromLocalStorage.map(product => Number(product.amount) + Number(subTotal));
+const quant = getCartDataFromLocalStorage.map(product => [product.id, product.quantity]);
 for(let i = 0; i < result.length; i++) {
 		final = final + result[i];
 }
@@ -45,6 +46,7 @@ export const subtotal = atom(final);
 export const allTotal = atom(final > 0? final + 5: 0);
 export const allCart = atom(getCartDataFromLocalStorage);
 export const logIn = atom(getUser);
+export const quantities = atom(quant);
 
 const App = () => {
 	const [subTotal, setSubTotal] = useAtom(subtotal);

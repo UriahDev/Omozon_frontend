@@ -2,26 +2,27 @@ import { useEffect, useState } from 'preact/hooks';
 import { useAtom } from 'jotai';
 import './shopItem.css';
 
-import { allTotal, subtotal, allCart } from '../../components/app';
+import { allTotal, subtotal, allCart, quantities } from '../../components/app';
 
 const ShopItem = ({name, image, id, amount, func}) => {
     const [total, setTotal] = useAtom(allTotal);
     const [, setSubTotal] = useAtom(subtotal);
     const [, setCartData] = useAtom(allCart);
-    const [ itemQuantity, setItemQuantity ] = useState(1);
+    const [quant, setQuant] = useAtom(quantities);
+    const [ itemQuantity, setItemQuantity ] = useState(() => 1);
 
     const increaseQuantity = () => {
         setSubTotal(prev => prev + (amount));
         if(total == 0) setTotal(prev => prev + amount + 5);
         else setTotal(prev => prev + (amount));
-        setItemQuantity(itemQuantity + 1);
+        setItemQuantity(prev => prev + 1);
     }
 
     const decreaseQuantity = () => {
         if(itemQuantity > 0) { 
             setSubTotal(prev => prev - (amount));
             setTotal(prev => prev - (amount)); 
-            setItemQuantity(itemQuantity - 1);
+            setItemQuantity(prev => prev - 1);
         } else {
             const items = JSON.parse(localStorage.getItem('items'));
             const updatedStorage = items.filter(element => element.id !== id);
@@ -33,7 +34,15 @@ const ShopItem = ({name, image, id, amount, func}) => {
     };
 
     useEffect(() => {
+        let newQuant = [];
         func(itemQuantity);
+        for(let i = 0; i < quant.length; i++) {
+            if(quant[i][0] == id) {
+                quant[i][1] = itemQuantity;
+            }
+            newQuant.push(quant[i]);
+        }
+            setQuant(newQuant);
     }, [itemQuantity, id]);
 
     return (
