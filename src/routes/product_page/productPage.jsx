@@ -5,12 +5,13 @@ import './productPage.css';
 
 //jotai import
 import { useAtom } from 'jotai';
-import { allCart, allTotal, subtotal } from '../../components/app';
+import { allCart, allTotal, subtotal, quantities } from '../../components/app';
 
 const ProductPage = ({ id }) => {
     const [total, setTotal] = useAtom(allTotal);
     const [, setSubTotal] = useAtom(subtotal);
     const [, setAllCartData] = useAtom(allCart);
+    const [, setQuant] = useAtom(quantities);
 
     let product;
     if (id <= 10) [ product ] = products.filter(element => element.id == id); 
@@ -26,6 +27,7 @@ const ProductPage = ({ id }) => {
             setAllCartData(() => allProduct);
             setSubTotal(prev => prev + product.amount);
             total === 0 ? setTotal(prev => prev + product.amount + 5): setTotal(prev => prev + product.amount) //Add delivery fees
+            setQuant(prev => [...prev, [product.id, product.quantity]]);
             allProduct = [];
         } else {
             allProduct = addedProducts;
@@ -36,6 +38,7 @@ const ProductPage = ({ id }) => {
                 setAllCartData(() => allProduct);
                 setSubTotal(prev => prev + product.amount);
                 total === 0 ? setTotal(prev => prev + product.amount + 5): setTotal(prev => prev + product.amount) //Add delivery fees
+                setQuant(prev => [...prev, [product.id, product.quantity]]);
                 allProduct = [];
             } else alert('Item already added to cart');
         }

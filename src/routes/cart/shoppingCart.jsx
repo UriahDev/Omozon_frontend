@@ -5,25 +5,22 @@ import './shoppingCart.css';
 
 //importing jotai context
 import { useAtom } from 'jotai';
-import { allTotal, subtotal, allCart } from '../../components/app';
-import { useEffect } from 'preact/hooks';
+import { allTotal, subtotal, allCart, quantities } from '../../components/app';
 
 const ShoppingCart = () => {
     const [total, setTotal] = useAtom(allTotal);
     const [subTotal, setSubTotal] = useAtom(subtotal);
     const [cartData,setCartData] = useAtom(allCart);
+    const [quant] = useAtom(quantities);
 
     let itemQuant;
-    const pull_data = (data) => itemQuant = data;
-    useEffect(() => {
-        pull_data();
-    }, [itemQuant]);
-
 
     const removeProduct = (id) => {
         const items = JSON.parse(localStorage.getItem('items'));
         const updatedStorage = items.filter(element => element.id !== id);
         const [ subtractItem ] = items.filter(element => element.id == id);
+        const [item] = quant.filter(element => element[0] == id);
+        itemQuant = item[1];
         let amountToSubtract;
         if(itemQuant == undefined) amountToSubtract = subtractItem.amount
         else amountToSubtract = itemQuant * subtractItem.amount;
@@ -44,7 +41,6 @@ const ShoppingCart = () => {
                 image={item.image}
                 id={item.id}
                 amount={item.amount}
-                func={pull_data}
             />
             <div className='divs'>
                 <GrFormClose onClick={() => removeProduct(item.id)} />

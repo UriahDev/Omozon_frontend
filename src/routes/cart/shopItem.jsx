@@ -4,7 +4,7 @@ import './shopItem.css';
 
 import { allTotal, subtotal, allCart, quantities } from '../../components/app';
 
-const ShopItem = ({name, image, id, amount, func}) => {
+const ShopItem = ({name, image, id, amount}) => {
     const [total, setTotal] = useAtom(allTotal);
     const [, setSubTotal] = useAtom(subtotal);
     const [, setCartData] = useAtom(allCart);
@@ -19,23 +19,24 @@ const ShopItem = ({name, image, id, amount, func}) => {
     }
 
     const decreaseQuantity = () => {
-        if(itemQuantity > 0) { 
+        if(itemQuantity > 1) { 
             setSubTotal(prev => prev - (amount));
             setTotal(prev => prev - (amount)); 
             setItemQuantity(prev => prev - 1);
         } else {
+            setSubTotal(prev => prev - (amount));
+            setTotal(prev => prev - (amount)); 
             const items = JSON.parse(localStorage.getItem('items'));
             const updatedStorage = items.filter(element => element.id !== id);
             localStorage.setItem('items', JSON.stringify(updatedStorage));
             setCartData(updatedStorage);
-            if(total == 5 ) setTotal(0);
             setItemQuantity(1);
         }
+        if(total == (amount + 5) ) setTotal(0);
     };
 
     useEffect(() => {
         let newQuant = [];
-        func(itemQuantity);
         for(let i = 0; i < quant.length; i++) {
             if(quant[i][0] == id) {
                 quant[i][1] = itemQuantity;
@@ -48,7 +49,7 @@ const ShopItem = ({name, image, id, amount, func}) => {
     return (
     <div className='shopItem_contain' key={id}>
         <img src={image} className='image' />
-        <div className='divs'>
+        <div className='divs_one'>
             <p className='name'>{name.substring(0, 15)}{name.length > 15 && '...'}</p>
         </div>
         <div className='btn_contain_shopItem'>
