@@ -4,26 +4,29 @@ import axios from 'axios';
 
 //Importing Jotai
 import { useAtom } from 'jotai';
-import { quantities } from '../../components/app';
+import { quantities, allCart } from '../../components/app';
 
 const ProductDisplay = () => {
   const [quant] = useAtom(quantities);
+  const [cartData] = useAtom(allCart);
 
   const submitProducts = async (e) => {
     e.preventDefault();
-    const result = await axios.post(import.meta.env.VITE_POST_URL, {
-      products: quant,
-    },{
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    // .then(response => response.json())
-    .catch(err => console.log(err));
-
-    const body = result;
-    return window.location.href = body.data;
+    if(cartData.length > 0) {
+      const result = await axios.post(import.meta.env.VITE_POST_URL, {
+        products: quant,
+      },{
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      // .then(response => response.json())
+      .catch(err => console.log(err));
+  
+      const body = result;
+      window.location.href = body.data;
+    } else alert('Please add item to cart.');
   }
 
   return(
