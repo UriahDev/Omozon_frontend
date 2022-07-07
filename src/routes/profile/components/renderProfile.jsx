@@ -12,7 +12,7 @@ import Orders from './orders';
 import Address from './address';
 import Payments from './payments';
 
-const RenderProfile = ({ user }) => {
+const RenderProfile = () => {
     const [,setLoggedIn] = useAtom(logIn);
 	const [ render, setRender ] = useState('order');
 
@@ -36,8 +36,8 @@ const RenderProfile = ({ user }) => {
 					<img src='https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80' />
 				</div>
 				<div className='profile_writings'>
-					<h2>{user}</h2>
-					<p>Accra, Ghana</p>
+					<h2>Name</h2>
+					<p>City, Country</p>
 					<button className='edit_btn'>Edit</button>
 					<button onClick={signoutFunction} className='signout_btn'>Sign Out</button>
 				</div>

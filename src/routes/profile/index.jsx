@@ -6,13 +6,12 @@ import './style.css';
 import { useAtom } from 'jotai';
 import { logIn } from '../../components/app';
 
-// Note: `user` comes from the URL, courtesy of our router
-const Profile = ({ user }) => {
+const Profile = () => {
 	const [ loggedIn ] = useAtom(logIn);
 
 	return (
 		<section>
-			{loggedIn ? <RenderProfile user={user}/> : <Account />}
+			{loggedIn ? <RenderProfile /> : <Account />}
 		</section>
 	);
 }

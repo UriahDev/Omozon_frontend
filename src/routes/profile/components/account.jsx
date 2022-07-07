@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile  } from 'firebase/auth';
 import './account.css'; 
 
 //Jotai import 
@@ -47,8 +47,6 @@ const Account = () => {
                 }
             } else alert('Please enter details');
         }
-
-        console.log(user)
       
         if(user.length !== 0 ) {
             const auth = getAuth(app);
@@ -56,9 +54,18 @@ const Account = () => {
                 createUserWithEmailAndPassword(auth, email, password)
                     .then((userCredential) => {
                         // Signed in 
-                        const user = userCredential.user;
+                        // const user = userCredential.user;
                         // ...
-                        localStorage.setItem('user', JSON.stringify(username));
+                        updateProfile(auth.currentUser, {
+                            displayName: username,
+                          }).then(() => {
+                            // Profile updated!
+                            // ...
+                          }).catch((error) => {
+                            // An error occurred
+                            // ...
+                          });
+                        localStorage.setItem('user', 'true');
                         setLoggedIn(true);
                     })
                     .catch((error) => {

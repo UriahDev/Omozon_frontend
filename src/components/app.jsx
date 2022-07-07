@@ -65,14 +65,14 @@ const App = () => {
 	}
 
 	return(
-		<div id="app">
+		<div id='app'>
 			<Provider>
 				<Header />
 				<Router>
-					<Home path="/" />
-					<Profile path="/profile/:user" />
-					<ProductPage path="/product/:id" />
-					<CartPage path="/cart" />
+					<Home path='/' />
+					<Profile path='/profile' />
+					<ProductPage path='/product/:id' />
+					<CartPage path='/cart' />
 				</Router>
 				<Footer />
 			</Provider>

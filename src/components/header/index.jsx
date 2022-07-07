@@ -21,14 +21,11 @@ return(
 );
 }
 
-//This variable defines the path to a specific product 
-const user = '/profile/' + 'Uriah Otchere';
-
 const Header = () => (
 	<header className='header'>
 		<Link href="/"><h1>Omozon</h1></Link>
 		<nav className='contain_nav'>
-			<NavLink title='Account' goto={user} icon= 'true' />
+			<NavLink title='Account' goto='/profile' icon= 'true' />
 			<NavLink title='Cart' goto='/cart' icon='FaCartPlus' />
 		</nav>
 	</header>

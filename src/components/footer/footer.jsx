@@ -9,7 +9,7 @@ export default function Footer() {
             <div className='footer'>
                 <div className='each'>
                     <h4 className='h4'>Omozon</h4>
-                    <p className='p'>I an online shop to be proud of</p>
+                    <p className='p'>Purchase home equipments that simplify task for you. Worry no more about annoying, boring and repetitive tasks!</p>
                 </div>
                 <div className='each'>
                     <h4>POLICY INFO</h4>
